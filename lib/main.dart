@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import "./widgets/userTransactions.dart";
+import "./widgets/newTransaction.dart";
 
 void main() => runApp(MyApp());
 
@@ -19,11 +20,23 @@ class MyApp extends StatelessWidget {
 
 class Home extends StatelessWidget {
 
+  void showTransactionModal(BuildContext context) {
+    showModalBottomSheet(context: context, builder: (_) {
+      return NewTransaction();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Expenses Tracker"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {},
+          )
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,6 +51,12 @@ class Home extends StatelessWidget {
           ),
           UserTransactions()
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+        
       ),
     );
   }
