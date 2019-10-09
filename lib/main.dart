@@ -40,6 +40,8 @@ class Home extends StatelessWidget {
         title: Text("Expenses Tracker"),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Card(
             color: Colors.blue,
@@ -49,8 +51,24 @@ class Home extends StatelessWidget {
               child: Text("Chart"),
             ),
           ),
-          Card(
-            child: Text("List of Trans."),
+          Column(
+            children: transactions.map((transaction) {
+              return Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(transaction.amount.toString()),
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Text(transaction.title),
+                        Text(transaction.date.toString())
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
           )
         ],
       ),
