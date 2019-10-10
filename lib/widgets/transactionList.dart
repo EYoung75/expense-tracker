@@ -34,20 +34,26 @@ class TransactionList extends StatelessWidget {
                   elevation: 7,
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 40),
                   child: ListTile(
-                      leading: CircleAvatar(
-                        radius: 30,
-                        child: Padding(
-                          padding: EdgeInsets.all(5),
-                          child: FittedBox(
-                              child: Text("\$${transactions[index].amount}")),
-                        ),
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Padding(
+                        padding: EdgeInsets.all(5),
+                        child: FittedBox(
+                            child: Text("\$${transactions[index].amount}")),
                       ),
-                      title: Text(
-                        "${transactions[index].title}",
-                        style: Theme.of(context).textTheme.title,
-                      ),
-                      subtitle: Text(
-                          DateFormat.yMMMd().format(transactions[index].date))),
+                    ),
+                    title: Text(
+                      "${transactions[index].title}",
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                    subtitle: Text(
+                      DateFormat.yMMMd().format(transactions[index].date),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.delete),
+                    ),
+                  ),
                 );
               },
               itemCount: transactions.length,

@@ -59,11 +59,11 @@ class _HomeState extends State<Home> {
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(String txTitle, double txAmount, DateTime _chosenDate) {
     final newTransaction = Transaction(
         title: txTitle,
         amount: txAmount,
-        date: DateTime.now(),
+        date: _chosenDate,
         id: DateTime.now().toString());
 
     setState(() {
