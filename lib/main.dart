@@ -17,10 +17,8 @@ class MyApp extends StatelessWidget {
         fontFamily: "Quicksand",
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
-                title: TextStyle(fontFamily: "OpenSans", fontSize: 20),
-                button: TextStyle(color: Colors.white)
-              ),
-              
+              title: TextStyle(fontFamily: "OpenSans", fontSize: 20),
+              button: TextStyle(color: Colors.white)),
         ),
       ),
       home: Home(),
@@ -59,7 +57,8 @@ class _HomeState extends State<Home> {
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount, DateTime _chosenDate) {
+  void _addNewTransaction(
+      String txTitle, double txAmount, DateTime _chosenDate) {
     final newTransaction = Transaction(
         title: txTitle,
         amount: txAmount,
@@ -103,13 +102,23 @@ class _HomeState extends State<Home> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Chart(_recentTransactions),
-          TransactionList(_userTransactions, _deleteTransaction)
+          Expanded(
+              child: TransactionList(_userTransactions, _deleteTransaction))
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _showTransactionModal(context),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 8),
+          child: FloatingActionButton(
+            child: Icon(
+              Icons.add,
+              color: Colors.red,
+            ),
+            backgroundColor: Colors.white,
+            onPressed: () => _showTransactionModal(context),
+          ),
+        ),
+        color: Colors.red,
       ),
     );
   }

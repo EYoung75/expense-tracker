@@ -13,8 +13,10 @@ class ChartBar extends StatelessWidget {
       children: <Widget>[
         Container(
           height: 20,
-            child: FittedBox(
-                child: Text("\$${spendingAmount.toStringAsFixed(0)}"))),
+          child: FittedBox(
+            child: Text(label),
+          ),
+        ),
         SizedBox(
           height: 5,
         ),
@@ -30,19 +32,20 @@ class ChartBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)),
               ),
               FractionallySizedBox(
-                  heightFactor: percentage,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(10)),
-                  ))
+                heightFactor: percentage,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+              )
             ],
           ),
         ),
         SizedBox(
           height: 5,
         ),
-        Text(label)
+        Text("\$${spendingAmount.toStringAsFixed(0)}")
       ],
     );
   }
