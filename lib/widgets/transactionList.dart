@@ -21,48 +21,33 @@ class TransactionList extends StatelessWidget {
                 ),
                 SizedBox(height: 25),
                 Container(
-                  height: 200,
+                    height: 200,
                     child: Image.asset(
-                  "assets/images/waiting.png",
-                  fit: BoxFit.cover,
-                ))
+                      "assets/images/waiting.png",
+                      fit: BoxFit.cover,
+                    ))
               ],
             )
           : ListView.builder(
               itemBuilder: (context, index) {
                 return Card(
-                  margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.all(10),
-                        child: Text(
-                          "\$${transactions[index].amount.toStringAsFixed(2)}",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.deepOrange),
+                  elevation: 7,
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 40),
+                  child: ListTile(
+                      leading: CircleAvatar(
+                        radius: 30,
+                        child: Padding(
+                          padding: EdgeInsets.all(5),
+                          child: FittedBox(
+                              child: Text("\$${transactions[index].amount}")),
                         ),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                          color: Colors.deepOrange,
-                          width: 2,
-                        )),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(transactions[index].title,
-                              style: Theme.of(context).textTheme.title),
-                          Text(
-                            DateFormat.yMMMd().format(transactions[index].date),
-                            style: TextStyle(color: Colors.grey),
-                          )
-                        ],
+                      title: Text(
+                        "${transactions[index].title}",
+                        style: Theme.of(context).textTheme.title,
                       ),
-                    ],
-                  ),
+                      subtitle: Text(
+                          DateFormat.yMMMd().format(transactions[index].date))),
                 );
               },
               itemCount: transactions.length,
