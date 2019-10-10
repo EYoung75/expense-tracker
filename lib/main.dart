@@ -13,11 +13,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-          primarySwatch: Colors.red,
-          fontFamily: "Quicksand",
-          appBarTheme: AppBarTheme(
-              textTheme: ThemeData.light().textTheme.copyWith(
-                  title: TextStyle(fontFamily: "OpenSans", fontSize: 20)))),
+        primarySwatch: Colors.red,
+        fontFamily: "Quicksand",
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(fontFamily: "OpenSans", fontSize: 20),
+                button: TextStyle(color: Colors.white)
+              ),
+              
+        ),
+      ),
       home: Home(),
     );
   }
@@ -88,7 +93,10 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[Chart(_recentTransactions), TransactionList(_userTransactions)],
+        children: <Widget>[
+          Chart(_recentTransactions),
+          TransactionList(_userTransactions)
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
