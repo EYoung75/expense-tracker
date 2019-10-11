@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import "./widgets/newTransaction.dart";
-import "./models/transaction.dart";
 import "./widgets/transactionList.dart";
 import "./widgets/chart.dart";
+import "./models/transaction.dart";
 
 void main() => runApp(MyApp());
 
@@ -32,20 +32,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: "t1",
-    //   title: "New Shoes",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: "t2",
-    //   title: "coffee",
-    //   amount: 2.99,
-    //   date: DateTime.now(),
-    // )
-  ];
+  final List<Transaction> _userTransactions = [];
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
@@ -58,12 +45,13 @@ class _HomeState extends State<Home> {
   }
 
   void _addNewTransaction(
-      String txTitle, double txAmount, DateTime _chosenDate) {
-    final newTransaction = Transaction(
+    String txTitle, double txAmount, DateTime _chosenDate) {
+      final newTransaction = Transaction(
         title: txTitle,
         amount: txAmount,
         date: _chosenDate,
-        id: DateTime.now().toString());
+        id: DateTime.now().toString(),
+      );
 
     setState(() {
       _userTransactions.add(newTransaction);

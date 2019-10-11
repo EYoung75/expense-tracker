@@ -21,11 +21,12 @@ class TransactionList extends StatelessWidget {
                 ),
                 SizedBox(height: 25),
                 Container(
-                    height: 200,
-                    child: Image.asset(
-                      "assets/images/waiting.png",
-                      fit: BoxFit.cover,
-                    ))
+                  height: 200,
+                  child: Image.asset(
+                    "assets/images/waiting.png",
+                    fit: BoxFit.cover,
+                  ),
+                )
               ],
             )
           : ListView.builder(
@@ -39,12 +40,14 @@ class TransactionList extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(5),
                         child: FittedBox(
-                            child: Text("\$${transactions[index].amount}")),
+                          child: Text("\$${transactions[index].amount}"),
+                        ),
                       ),
                     ),
                     title: Text(
                       "${transactions[index].title}",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date),
