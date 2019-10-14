@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import "package:flutter/services.dart";
 
 import "./widgets/newTransaction.dart";
 import "./widgets/transactionList.dart";
 import "./widgets/chart.dart";
 import "./models/transaction.dart";
 
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +26,7 @@ class MyApp extends StatelessWidget {
               button: TextStyle(color: Colors.white)),
         ),
       ),
-      home: Home(),
+      home: Home(), 
     );
   }
 }
@@ -98,6 +103,7 @@ class _HomeState extends State<Home> {
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 8),
           child: FloatingActionButton(
+            elevation: 7,
             child: Icon(
               Icons.add,
               color: Colors.red,
